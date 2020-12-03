@@ -25,7 +25,7 @@ export default function Header() {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-      <Appbar position="static" className={classes.header} elevation="0">
+      <Appbar position="static" className={classes.header} >
         <Grid container direction="row">
           <Grid item xs={3}>
             <img

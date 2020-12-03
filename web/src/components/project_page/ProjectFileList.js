@@ -42,7 +42,7 @@ export default function ProjectFileList() {
           alignItems="center"
           className={classes.box}
         >
-          <Grid item xs="12">
+          <Grid item >
             <Typography
               variant="h6"
               color="inherit"
@@ -52,27 +52,27 @@ export default function ProjectFileList() {
               Arquivos do Projeto
             </Typography>
           </Grid>
-          <Grid item xs="12">
+          <Grid item >
             <Link variant="body2" color="inherit" align="center">
               arquivo.csv
             </Link>
           </Grid>
-          <Grid item xs="12">
+          <Grid item >
             <Link variant="body2" color="inherit" align="center">
               arquivo.csv
             </Link>
           </Grid>
-          <Grid item xs="12">
+          <Grid item >
             <Link variant="body2" color="inherit" align="center">
               arquivo.csv
             </Link>
           </Grid>
-          <Grid item xs="12">
+          <Grid item >
             <Link variant="body2" color="inherit" align="center">
               arquivo.csv
             </Link>
           </Grid>
-          <Grid item xs="12">
+          <Grid item >
             <Link variant="body2" color="inherit" align="center">
               arquivo.csv
             </Link>

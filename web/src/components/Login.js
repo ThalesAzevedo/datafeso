@@ -42,7 +42,7 @@ export default function AppLogin() {
           direction="column"
           alignItems="center"
         >
-          <Grid item xs="12">
+          <Grid item xs={12}>
             <Typography variant="h6" color="primary" align="center">
               Área do Pesquisador
             </Typography>

@@ -42,7 +42,7 @@ export default function ProjectFilters() {
           alignItems="center"
           className={classes.box}
         >
-          <Grid item xs="12">
+          <Grid item >
             <Typography variant="h6" color="primary" align="center">
               Filtrar Pesquisa
             </Typography>

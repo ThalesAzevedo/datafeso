@@ -33,7 +33,7 @@ export default function Inflacao() {
     <ThemeProvider theme={theme}>
       <Grid container direction="column">
         <Grid container direction="row" className={classes.box}>
-          <Grid item className={classes.box} xs="4">
+          <Grid item className={classes.box} xs={12}>
             <TextField
               className={classes.input}
               type="date"
@@ -43,7 +43,7 @@ export default function Inflacao() {
               size="small"
             ></TextField>
           </Grid>
-          <Grid item className={classes.box} xs="4">
+          <Grid item className={classes.box} xs={12}>
             <TextField
               className={classes.input}
               type="date"
@@ -53,7 +53,7 @@ export default function Inflacao() {
               size="small"
             ></TextField>
           </Grid>
-          <Grid className={classes.box} xs="4">
+          <Grid className={classes.box} xs={12}>
             <FormControl className={classes.formControl}>
               <InputLabel
                 id="product-id-label"

@@ -33,7 +33,7 @@ export default function Valores() {
     <ThemeProvider theme={theme}>
       <Grid container direction="colunm">
         <Grid container sdirection="row" className={classes.box}>
-          <Grid item className={classes.box} xs="4">
+          <Grid item className={classes.box} xs={4}>
             <TextField
               className={classes.input}
               type="date"
@@ -43,7 +43,7 @@ export default function Valores() {
               size="small"
             ></TextField>
           </Grid>
-          <Grid className={classes.input} xs="4">
+          <Grid className={classes.input} xs={4}>
             <FormControl className={classes.formControl}>
               <InputLabel
                 id="product-id-label"

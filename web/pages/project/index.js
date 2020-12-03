@@ -27,7 +27,6 @@ const useStyles = makeStyles({
   },
   sidebar: {
     minWidth: "240px",
-    min,
   },
 });
 
