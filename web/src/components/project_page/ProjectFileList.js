@@ -45,7 +45,6 @@ export default function ProjectFileList() {
           <Grid item >
             <Typography
               variant="h6"
-              color="inherit"
               align="center"
               className={classes.title}
             >
@@ -53,27 +52,27 @@ export default function ProjectFileList() {
             </Typography>
           </Grid>
           <Grid item >
-            <Link variant="body2" color="inherit" align="center">
+            <Link variant="body2" align="center">
               arquivo.csv
             </Link>
           </Grid>
           <Grid item >
-            <Link variant="body2" color="inherit" align="center">
+            <Link variant="body2"  align="center">
               arquivo.csv
             </Link>
           </Grid>
           <Grid item >
-            <Link variant="body2" color="inherit" align="center">
+            <Link variant="body2" align="center">
               arquivo.csv
             </Link>
           </Grid>
           <Grid item >
-            <Link variant="body2" color="inherit" align="center">
+            <Link variant="body2" align="center">
               arquivo.csv
             </Link>
           </Grid>
           <Grid item >
-            <Link variant="body2" color="inherit" align="center">
+            <Link variant="body2" align="center">
               arquivo.csv
             </Link>
           </Grid>

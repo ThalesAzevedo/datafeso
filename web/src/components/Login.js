@@ -52,7 +52,6 @@ export default function AppLogin() {
               className={classes.input}
               size="small"
               InputLabelProps={{ shrink: true }}
-              color="inherit"
               label="Usuário"
               variant="outlined"
             />
@@ -63,13 +62,12 @@ export default function AppLogin() {
               className={classes.input}
               size="small"
               InputLabelProps={{ shrink: true }}
-              color="inherit"
               label="Senha"
               variant="outlined"
             />
           </Grid>
           <Grid>
-            <Button className={classes.button} href="#" color="secundary">
+            <Button className={classes.button} href="#" color="secondary">
               Login
             </Button>
           </Grid>

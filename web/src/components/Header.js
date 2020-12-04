@@ -40,7 +40,7 @@ export default function Header() {
             </Typography>
           </Grid>
           <Grid item xs={3}>
-            <Button href="/" color="inherit">
+            <Button href="/">
               Tela Princial
             </Button>
           </Grid>

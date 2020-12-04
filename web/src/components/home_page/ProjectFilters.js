@@ -34,7 +34,7 @@ export default function ProjectFilters() {
 
   return (
     <div className={classes.root}>
-      <ThemeProvider>
+      <ThemeProvider theme={theme}>
         <Grid
           container
           direction="column"
