@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
   input: {
     margin: theme.spacing(1),
-    color: "#FFFFFF",
+    minWidth: 200,
   },
   result: {
     padding: theme.spacing(2),
@@ -43,7 +43,7 @@ export default function Inflacao() {
       <Grid container direction="colunm" >
       <Typography variant="h6" color="primary">Consulta de Inflação de Produtos</Typography>
         <Grid container  className={classes.box}>
-            <FormControl className={classes.input}>
+            <FormControl variant="outlined" className={classes.input}>
               <InputLabel
                 id="product-id-label"
                 InputLabelProps={{ shrink: true }}
@@ -53,9 +53,9 @@ export default function Inflacao() {
               <Select
                 labelId="product-id-label"
                 id="productId"
-                variant="outlined"
                 // value={}
                 // onChange={}
+                label="Produto"
               >
                 <MenuItem value={1}>Produto 1</MenuItem>
                 <MenuItem value={2}>Produto 2</MenuItem>

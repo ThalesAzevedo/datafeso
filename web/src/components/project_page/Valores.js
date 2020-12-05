@@ -19,8 +19,7 @@ const useStyles = makeStyles({
   },
   input: {
     margin: theme.spacing(1),
-    // color: "#FFFFFF",
-    // width:'300px'
+    minWidth: 200,
   },
   result: {
     padding: theme.spacing(2),
@@ -42,8 +41,8 @@ export default function Valores() {
       <Grid container direction="colunm" >
         <Typography variant="h6" color="primary">Consulta de Preços de Produtos</Typography>
         <Grid container className={classes.box}>
-            <FormControl className={classes.input}>
-              <InputLabel className={classes.input}
+            <FormControl variant="outlined" className={classes.input}>
+              <InputLabel 
                 id="product-id-label"
                 InputLabelProps={{ shrink: true }}
               >
@@ -52,9 +51,7 @@ export default function Valores() {
               <Select
                 labelId="product-id-label"
                 id="productId"
-                variant="outlined"
-                autoWidth={false}
-
+                label="Produto"
                 // value={}
                 // onChange={}
               >

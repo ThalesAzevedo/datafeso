@@ -1,11 +1,12 @@
+import{useState} from 'react'
+
 import Header from "../../src/components/Header";
-import AppLogin from "../../src/components/Login";
 import ProjectContent from "../../src/components/project_page/ProjectContent";
-import ProjectFileList from "../../src/components/project_page/ProjectFileList";
 import Footer from "../../src/components/Footer";
 
-import { makeStyles, ThemeProvider, Grid, Typography } from "@material-ui/core";
+import {makeStyles, ThemeProvider, Grid, Typography } from "@material-ui/core";
 import theme from "../../src/theme";
+import api from '../../src/services/api'
 
 const useStyles = makeStyles({
   root: {
@@ -19,14 +20,10 @@ const useStyles = makeStyles({
   },
   subtitle: {
     paddingLeft: theme.spacing(3),
-    // justifyContent: "space-around",
     justifyItems: 'start'
   },
   content: {
     padding: theme.spacing(2),
-    // margin: theme.spacing(1),
-    // backgroundColor: '#EEEEEE'
-    // justifyContent: "space-around",
     justifyItems: 'center',
     alignItems: 'center'
   },
@@ -39,6 +36,15 @@ const useStyles = makeStyles({
 
 export default function ProjectView() {
   const classes = useStyles();
+  const [apiData, setApiData] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  // const apiData;
+  api.get("/").then((response)=>{
+    setApiData(response.data);
+  })
+
+
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -54,7 +60,7 @@ export default function ProjectView() {
                 IPC-Feso | Cálculo de Inflação de Teresópolis
               </Typography>
             </Grid>
-            <Grid item direction="row" className={classes.subtitle}>
+            <Grid item className={classes.subtitle}>
                 <Typography variant="body1" color="primary">
                   Autora: Prof. Roberta
                 </Typography>
@@ -65,7 +71,7 @@ export default function ProjectView() {
 
             <Grid container direction="row">
               <Grid item xs={12} className={classes.content}>
-                <ProjectContent />
+                <ProjectContent data={apiData}/>
               </Grid>
               {/* <Grid item className={classes.sidebar}>
                 <AppLogin />

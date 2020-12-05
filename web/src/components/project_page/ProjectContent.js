@@ -7,6 +7,7 @@ import ProjectDescription from "./ProjectDescription";
 import AppLogin from "../Login";
 import ProjectFileList from "./ProjectFileList";
 import Chart from './DataChart'
+import api from '../../services/api'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,13 +31,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProjectContent() {
+export default function ProjectContent(props) {
   const classes = useStyles();
-
   const [tabValue, setTabValue] = useState(0);
+
+  
   return (
     <div className={classes.root}>
-      <Tabs centered value={tabValue} onChange={(_, newValue) => setTabValue(newValue)}>
+      <Tabs variant='fullWidth' centered value={tabValue} indicatorColor='secondary' onChange={(_, newValue) => setTabValue(newValue)}>
         <Tab className={classes.tabTitle} label={"Dados do Pesquisa/Projeto"} />
         <Tab className={classes.tabTitle} label={"Consulta de Dados"} />
         <Tab className={classes.tabTitle} label={"Gráfico"} />
@@ -45,10 +47,10 @@ export default function ProjectContent() {
         <Container  className={classes.content}>
           {tabValue === 0 && (
             <Grid container direction="row">
-            <Grid  >
+            <Grid md={12} lg={9}>
                <ProjectDescription/>
             </Grid>
-            <Grid >
+            <Grid  lg={3} >
               <AppLogin/>
               <ProjectFileList/>
             </Grid>
@@ -56,8 +58,8 @@ export default function ProjectContent() {
           )}
           {tabValue === 1 && (
             <>
-              <Valores />
-              <Inflacao />
+              <Valores data={props.apiData}/>
+              <Inflacao data={props.apiData} />
             </>
           )}
           {tabValue === 2 && (

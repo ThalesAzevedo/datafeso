@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <ThemeProvider theme={theme}>
       <Appbar position="static" className={classes.header} >
-        <Grid container direction="row">
+        <Grid container >
           {/* <Grid item xs={3}>
             <img
               src={"http://www.unifeso.edu.br/images/logo/UNIFESO-BRANCO.png"}
@@ -35,7 +35,7 @@ export default function Header() {
               alt={"Logo da UNIFESO"}
             />
           </Grid> */}
-          <Grid item ={6}>
+          <Grid item >
             <Typography variant="h3" align="center" className={classes.title}>
               DataFeso
             </Typography>

@@ -36,7 +36,7 @@ export default function AppLogin() {
   return (
     <Paper className={classes.root}>
       <ThemeProvider theme={theme}>
-        <Grid xs='auto'
+        <Grid 
           container
           className={classes.box}
           direction="column"
