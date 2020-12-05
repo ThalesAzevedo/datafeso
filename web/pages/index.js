@@ -19,6 +19,7 @@ const useStyles = makeStyles({
   title: {
     padding: theme.spacing(2),
     paddingLeft: theme.spacing(3),
+    width:"100vw"
   },
 });
 
@@ -30,7 +31,7 @@ export default function App() {
         <Header />
         <main>
           <Grid container direction="column">
-            <Grid item xs={12}>
+            <Grid item >
               <Typography
                 variant="h4"
                 color="primary"
@@ -40,11 +41,11 @@ export default function App() {
               </Typography>
             </Grid>
             <Grid container direction="row">
-              <Grid item xs={10} padding="spacing(3)">
+              <Grid item  >
                 <ProjectList />
               </Grid>
 
-              <Grid item xs={2}>
+              <Grid item>
                 <AppLogin />
                 <ProjectFilters />
               </Grid>

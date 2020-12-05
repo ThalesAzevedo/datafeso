@@ -11,7 +11,7 @@ import theme from "../../theme";
 
 const useStyles = makeStyles({
   root: {
-    paddingRight: theme.spacing(2),
+    padding: theme.spacing(1),
     minWidth: "240px",
   },
   box: {

@@ -8,22 +8,30 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  Paper,  
 } from "@material-ui/core";
 import theme from "../../theme";
 
 const useStyles = makeStyles({
+  root: {
+    padding: theme.spacing(2),
+    margin: theme.spacing(1)
+  },
   input: {
     margin: theme.spacing(1),
     color: "#FFFFFF",
   },
   result: {
+    padding: theme.spacing(2),
     "& span": {
       color: theme.palette.primary.main,
       fontWeight: "bold",
     },
+    
   },
   box: {
-    alignItems: "flex-start",
+    // alignItems: "flex-start",
+    backgroundColor: '#FEFEFE'
   },
 });
 
@@ -31,30 +39,11 @@ export default function Inflacao() {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-      <Grid container direction="column">
-        <Grid container direction="row" className={classes.box}>
-          <Grid item className={classes.box} xs={12}>
-            <TextField
-              className={classes.input}
-              type="date"
-              variant="outlined"
-              label="Data Início"
-              InputLabelProps={{ shrink: true }}
-              size="small"
-            ></TextField>
-          </Grid>
-          <Grid item className={classes.box} xs={12}>
-            <TextField
-              className={classes.input}
-              type="date"
-              variant="outlined"
-              label="Data Fim"
-              InputLabelProps={{ shrink: true }}
-              size="small"
-            ></TextField>
-          </Grid>
-          <Grid className={classes.box} xs={12}>
-            <FormControl className={classes.formControl}>
+      <Paper className={classes.root}>
+      <Grid container direction="colunm" >
+      <Typography variant="h6" color="primary">Consulta de Inflação de Produtos</Typography>
+        <Grid container  className={classes.box}>
+            <FormControl className={classes.input}>
               <InputLabel
                 id="product-id-label"
                 InputLabelProps={{ shrink: true }}
@@ -73,14 +62,31 @@ export default function Inflacao() {
                 <MenuItem value={3}>Produto 3</MenuItem>
               </Select>
             </FormControl>
-          </Grid>
+          
+            <TextField
+              className={classes.input}
+              type="date"
+              variant="outlined"
+              label="Data Início"
+              InputLabelProps={{ shrink: true }}
+            ></TextField>
+          
+            <TextField
+              className={classes.input}
+              type="date"
+              variant="outlined"
+              label="Data Fim"
+              InputLabelProps={{ shrink: true }}
+            ></TextField>
+          
         </Grid>
-        <Grid container xs="7" className={classes.result}>
+        <Grid container className={classes.result}>
           <Typography>
             <span>Resultado:</span> _______
           </Typography>
         </Grid>
       </Grid>
+      </Paper>
     </ThemeProvider>
   );
 }

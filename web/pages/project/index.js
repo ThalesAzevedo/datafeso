@@ -19,13 +19,20 @@ const useStyles = makeStyles({
   },
   subtitle: {
     paddingLeft: theme.spacing(3),
+    // justifyContent: "space-around",
+    justifyItems: 'start'
   },
   content: {
     padding: theme.spacing(2),
     // margin: theme.spacing(1),
     // backgroundColor: '#EEEEEE'
+    // justifyContent: "space-around",
+    justifyItems: 'center',
+    alignItems: 'center'
   },
   sidebar: {
+    padding: theme.spacing(2),
+
     minWidth: "240px",
   },
 });
@@ -47,27 +54,23 @@ export default function ProjectView() {
                 IPC-Feso | Cálculo de Inflação de Teresópolis
               </Typography>
             </Grid>
-            <Grid container direction="row" className={classes.subtitle}>
-              <Grid item xs={2}>
+            <Grid item direction="row" className={classes.subtitle}>
                 <Typography variant="body1" color="primary">
                   Autora: Prof. Roberta
                 </Typography>
-              </Grid>
-              <Grid item xs={2}>
                 <Typography variant="body1" color="primary">
                   Ultima Atualização: 01/12/2020
                 </Typography>
-              </Grid>
             </Grid>
 
             <Grid container direction="row">
-              <Grid item xs={10} className={classes.content}>
+              <Grid item xs={12} className={classes.content}>
                 <ProjectContent />
               </Grid>
-              <Grid item className={classes.sidebar}>
+              {/* <Grid item className={classes.sidebar}>
                 <AppLogin />
                 <ProjectFileList />
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
         </main>

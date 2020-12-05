@@ -5,6 +5,7 @@ import {
   Grid,
   Button,
   Link,
+  Paper,
 } from "@material-ui/core";
 import React from "react";
 import { ThemeProvider } from "styled-components";
@@ -12,11 +13,9 @@ import theme from "../../theme";
 
 const useStyles = makeStyles({
   root: {
-    paddingRight: theme.spacing(2),
-    minWidth: "240px",
+    margin: theme.spacing(1),
   },
   box: {
-    backgroundColor: "#eeeeee",
     borderRadius: "5px",
     padding: theme.spacing(2),
   },
@@ -33,7 +32,7 @@ const useStyles = makeStyles({
 export default function ProjectFileList() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <Paper className={classes.root}>
       <ThemeProvider theme={theme}>
         <Grid
           container
@@ -83,6 +82,6 @@ export default function ProjectFileList() {
           </Grid>
         </Grid>
       </ThemeProvider>
-    </div>
+    </Paper>
   );
 }

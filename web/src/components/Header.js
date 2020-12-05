@@ -13,6 +13,7 @@ import theme from "../theme";
 const useStyles = makeStyles({
   title: {
     fontWeight: "bold",
+    fontSize: '3em'
   },
   header: {
     padding: theme.spacing(3),
@@ -27,23 +28,23 @@ export default function Header() {
     <ThemeProvider theme={theme}>
       <Appbar position="static" className={classes.header} >
         <Grid container direction="row">
-          <Grid item xs={3}>
+          {/* <Grid item xs={3}>
             <img
               src={"http://www.unifeso.edu.br/images/logo/UNIFESO-BRANCO.png"}
-              height={60}
+              width="150vw"
               alt={"Logo da UNIFESO"}
             />
-          </Grid>
-          <Grid item xs={6}>
+          </Grid> */}
+          <Grid item ={6}>
             <Typography variant="h3" align="center" className={classes.title}>
               DataFeso
             </Typography>
           </Grid>
-          <Grid item xs={3}>
-            <Button href="/">
+          {/* <Grid item xs={3}>
+            <Button color="inherit" href="/">
               Tela Princial
-            </Button>
-          </Grid>
+            </Button> */}
+          {/* </Grid> */}
         </Grid>
       </Appbar>
     </ThemeProvider>

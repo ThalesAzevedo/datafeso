@@ -8,15 +8,22 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  Paper,
 } from "@material-ui/core";
 import theme from "../../theme";
 
 const useStyles = makeStyles({
+  root: {
+    padding: theme.spacing(2),
+    margin:theme.spacing(1)
+  },
   input: {
     margin: theme.spacing(1),
-    color: "#FFFFFF",
+    // color: "#FFFFFF",
+    // width:'300px'
   },
   result: {
+    padding: theme.spacing(2),
     "& span": {
       color: theme.palette.primary.main,
       fontWeight: "bold",
@@ -31,21 +38,12 @@ export default function Valores() {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
-      <Grid container direction="colunm">
-        <Grid container sdirection="row" className={classes.box}>
-          <Grid item className={classes.box} xs={4}>
-            <TextField
-              className={classes.input}
-              type="date"
-              variant="outlined"
-              label="Período"
-              InputLabelProps={{ shrink: true }}
-              size="small"
-            ></TextField>
-          </Grid>
-          <Grid className={classes.input} xs={4}>
-            <FormControl className={classes.formControl}>
-              <InputLabel
+      <Paper className={classes.root}>
+      <Grid container direction="colunm" >
+        <Typography variant="h6" color="primary">Consulta de Preços de Produtos</Typography>
+        <Grid container className={classes.box}>
+            <FormControl className={classes.input}>
+              <InputLabel className={classes.input}
                 id="product-id-label"
                 InputLabelProps={{ shrink: true }}
               >
@@ -55,6 +53,8 @@ export default function Valores() {
                 labelId="product-id-label"
                 id="productId"
                 variant="outlined"
+                autoWidth={false}
+
                 // value={}
                 // onChange={}
               >
@@ -63,14 +63,25 @@ export default function Valores() {
                 <MenuItem value={3}>Produto 3</MenuItem>
               </Select>
             </FormControl>
-          </Grid>
+          
+            <TextField
+              className={classes.input}
+              type="date"
+              variant="outlined"
+              label="Período"
+              InputLabelProps={{ shrink: true }}
+              // size="small"
+            ></TextField>
+          
+         
         </Grid>
-        <Grid container xs="7" className={classes.result}>
+        <Grid container className={classes.result}>
           <Typography>
             <span>Resultado:</span> _______
           </Typography>
         </Grid>
       </Grid>
+      </Paper>
     </ThemeProvider>
   );
 }

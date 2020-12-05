@@ -6,20 +6,20 @@ import {
   Button,
   Typography,
   ThemeProvider,
+  Paper,
 } from "@material-ui/core";
 import theme from "../theme";
 
 const useStyles = makeStyles({
   root: {
-    paddingRight: theme.spacing(2),
-    minWidth: "240px",
+    margin: theme.spacing(1),
   },
   box: {
-    backgroundColor: "#eeeeee",
     borderRadius: "5px",
     padding: theme.spacing(2),
-    marginBottom: theme.spacing(1),
-    marginRight: theme.spacing(2),
+  },
+  title: {
+    color: theme.palette.primary.main,
   },
   input: {
     margin: theme.spacing(1),
@@ -34,16 +34,17 @@ const useStyles = makeStyles({
 export default function AppLogin() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <Paper className={classes.root}>
       <ThemeProvider theme={theme}>
-        <Grid
+        <Grid xs='auto'
           container
           className={classes.box}
           direction="column"
           alignItems="center"
         >
-          <Grid item xs={12}>
-            <Typography variant="h6" color="primary" align="center">
+          <Grid item >
+            <Typography variant="h6" 
+              className={classes.title} align="center">
               Área do Pesquisador
             </Typography>
           </Grid>
@@ -73,6 +74,6 @@ export default function AppLogin() {
           </Grid>
         </Grid>
       </ThemeProvider>
-    </div>
+    </Paper>
   );
 }
