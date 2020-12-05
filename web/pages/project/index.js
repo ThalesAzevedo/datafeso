@@ -1,5 +1,3 @@
-import{useState} from 'react'
-
 import Header from "../../src/components/Header";
 import ProjectContent from "../../src/components/project_page/ProjectContent";
 import Footer from "../../src/components/Footer";
@@ -7,6 +5,7 @@ import Footer from "../../src/components/Footer";
 import {makeStyles, ThemeProvider, Grid, Typography } from "@material-ui/core";
 import theme from "../../src/theme";
 import api from '../../src/services/api'
+import {ProjectProvider} from '../../src/context/context'
 
 const useStyles = makeStyles({
   root: {
@@ -36,18 +35,13 @@ const useStyles = makeStyles({
 
 export default function ProjectView() {
   const classes = useStyles();
-  const [apiData, setApiData] = useState([]);
-  const [products, setProducts] = useState([]);
-
-  // const apiData;
-  api.get("/").then((response)=>{
-    setApiData(response.data);
-  })
 
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={classes.root}>
+      <ProjectProvider>
+        <div className={classes.root}>
+        
         <Header />
         <main>
           <Grid container direction="column">
@@ -71,7 +65,7 @@ export default function ProjectView() {
 
             <Grid container direction="row">
               <Grid item xs={12} className={classes.content}>
-                <ProjectContent data={apiData}/>
+                <ProjectContent />
               </Grid>
               {/* <Grid item className={classes.sidebar}>
                 <AppLogin />
@@ -90,6 +84,7 @@ export default function ProjectView() {
           }
         `}
       </style>
+      </ProjectProvider>
     </ThemeProvider>
   );
 }

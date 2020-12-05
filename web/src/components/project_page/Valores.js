@@ -1,3 +1,4 @@
+import {useContext, useState} from 'react'
 import {
   Grid,
   makeStyles,
@@ -9,7 +10,9 @@ import {
   FormControl,
   InputLabel,
   Paper,
+  Button,
 } from "@material-ui/core";
+import  ProjectContext  from "../../context/context";
 import theme from "../../theme";
 
 const useStyles = makeStyles({
@@ -33,8 +36,19 @@ const useStyles = makeStyles({
   },
 });
 
+
+
 export default function Valores() {
   const classes = useStyles();
+  const {state} = useContext(ProjectContext);
+  const [result, setResult] = useState('')
+  
+
+  const handleButtom = e => {
+    e.preventDefault();
+    setResult("Resultado esperado.")
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Paper className={classes.root}>
@@ -55,9 +69,9 @@ export default function Valores() {
                 // value={}
                 // onChange={}
               >
-                <MenuItem value={1}>Produto 1</MenuItem>
-                <MenuItem value={2}>Produto 2</MenuItem>
-                <MenuItem value={3}>Produto 3</MenuItem>
+                {state.products.map((element) => {
+                  return <MenuItem value={element.id}>{element.name}</MenuItem>
+                })}
               </Select>
             </FormControl>
           
@@ -67,14 +81,17 @@ export default function Valores() {
               variant="outlined"
               label="Período"
               InputLabelProps={{ shrink: true }}
-              // size="small"
             ></TextField>
+          
           
          
         </Grid>
+        <Grid xs={12}>
+        <Button  type='submit' size='medium' variant='contained' color='primary' className={classes.input} onClick={handleButtom}>Consultar</Button>
+        </Grid>
         <Grid container className={classes.result}>
           <Typography>
-            <span>Resultado:</span> _______
+            <span>Resultado:</span> {result}
           </Typography>
         </Grid>
       </Grid>

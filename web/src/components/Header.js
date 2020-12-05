@@ -40,11 +40,11 @@ export default function Header() {
               DataFeso
             </Typography>
           </Grid>
-          {/* <Grid item xs={3}>
+          <Grid item xs={3}>
             <Button color="inherit" href="/">
-              Tela Princial
-            </Button> */}
-          {/* </Grid> */}
+                Voltar
+            </Button> 
+           </Grid>
         </Grid>
       </Appbar>
     </ThemeProvider>

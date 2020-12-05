@@ -7,12 +7,9 @@ import ProjectDescription from "./ProjectDescription";
 import AppLogin from "../Login";
 import ProjectFileList from "./ProjectFileList";
 import Chart from './DataChart'
-import api from '../../services/api'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // backgroundColor: "#Efefef",
-    // width:"70vw"
   },
   appBarSpacer: {
     ...theme.mixins.toolbar,
@@ -31,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function ProjectContent(props) {
   const classes = useStyles();
   const [tabValue, setTabValue] = useState(0);
@@ -38,19 +36,19 @@ export default function ProjectContent(props) {
   
   return (
     <div className={classes.root}>
-      <Tabs variant='fullWidth' centered value={tabValue} indicatorColor='secondary' onChange={(_, newValue) => setTabValue(newValue)}>
+      <Tabs variant='scrollable' value={tabValue} indicatorColor='secondary' onChange={(_, newValue) => setTabValue(newValue)}>
         <Tab className={classes.tabTitle} label={"Dados do Pesquisa/Projeto"} />
         <Tab className={classes.tabTitle} label={"Consulta de Dados"} />
         <Tab className={classes.tabTitle} label={"Gráfico"} />
       </Tabs>
       <main className={classes.layout}>
-        <Container  className={classes.content}>
+        <Container  className={classes.content}> 
           {tabValue === 0 && (
             <Grid container direction="row">
-            <Grid md={12} lg={9}>
+            <Grid sm={12} md={9}>
                <ProjectDescription/>
             </Grid>
-            <Grid  lg={3} >
+            <Grid xs={12} md={3} >
               <AppLogin/>
               <ProjectFileList/>
             </Grid>
@@ -58,8 +56,8 @@ export default function ProjectContent(props) {
           )}
           {tabValue === 1 && (
             <>
-              <Valores data={props.apiData}/>
-              <Inflacao data={props.apiData} />
+              <Valores/>
+              <Inflacao />
             </>
           )}
           {tabValue === 2 && (
