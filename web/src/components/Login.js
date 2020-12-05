@@ -9,6 +9,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import theme from "../theme";
+import api from "../services/api";
 
 const useStyles = makeStyles({
   root: {
@@ -32,12 +33,34 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function AppLogin() {
   const classes = useStyles();
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
   const [logged, setLogged] = useState(false);
 
+  const [file, setFile] = useState();
+
+
+  const onSubmitFile = (event) =>{
+    event.preventDefault();
+
+    let formData = new FormData();
+    formData.append('file', file)
+
+    console.log(file)
+
+    api.post('/upload', formData , {headers:{
+      'Content-Type': 'multipart/form-data',
+    }}).then(function () {
+      console.log('SUCCESS!!');
+    })
+    .catch(function (err) {
+      console.log('FAILURE!!', err);
+    });
+
+  }
 
   const handleLogin = ()=>{
     console.log(logged)
@@ -57,19 +80,19 @@ export default function AppLogin() {
   return (
     <Paper className={classes.root}>
       <ThemeProvider theme={theme}>
-        <Grid 
+        <Grid
           container
           className={classes.box}
           direction="column"
           alignItems="center"
         >
           <Grid item >
-            <Typography variant="h6" 
+            <Typography variant="h6"
               className={classes.title} align="center">
               Área do Pesquisador
             </Typography>
           </Grid>
-            {!logged? 
+            {!logged?
               <>
                 <Grid>
                   <TextField
@@ -90,7 +113,7 @@ export default function AppLogin() {
                     InputLabelProps={{ shrink: true }}
                     label="Senha"
                     name ='pass'
-                    variant="outlined"  
+                    variant="outlined"
                     onChange={event => setPass(event.target.value)}
                   />
                 </Grid>
@@ -102,13 +125,19 @@ export default function AppLogin() {
             </>
          :<>
             <Typography>Olá {user}</Typography>
+
+            <form id="uploadForm"action='#' role="form" method="post" enctype='multipart/form-data'>
+                <input type="file" id="file" name="file" onChange={event => setFile(event.target.files[0])}/>
+                <input type='submit' value='Upload' onClick={onSubmitFile}/>
+            </form>
+
             <Button  className={classes.button} href="#" color="secondary" onClick={handleLogout} >
               Logout
             </Button>
           </>
         }
         </Grid>
-        
+
       </ThemeProvider>
     </Paper>
   );

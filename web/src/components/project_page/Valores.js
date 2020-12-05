@@ -101,7 +101,7 @@ export default function Valores() {
           
             <TextField
               className={classes.input}
-              type="date"
+              type="month"
               variant="outlined"
               label="Período"
               InputLabelProps={{ shrink: true }}
