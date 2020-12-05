@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import ProjectCard from "./ProjectCard";
 
-import { ProjectsWarp } from "../styles";
 import { Grid, makeStyles } from "@material-ui/core";
 import theme from "../../theme";
 
