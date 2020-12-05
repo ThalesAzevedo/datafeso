@@ -4,14 +4,48 @@ import api from '../services/api'
 const ProjectContext = createContext({});
 
 export function ProjectProvider (props) {
+    const [apiData, setApiData] = useState([]);
+    const [products, setProducts]=useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const products = [{"id":1, "name":"Prod01"},{"id":2, "name":"Prod02"},{"id":3, "name":"Prod03"}]
-    const apiData = [{"_id":"5fc99b9b389df502f8f0c40a","dataCollection":1,"date":"2007-01-01T00:00:00.000Z","products":[{"_id":"5fc99b9b389df502f8f0c40b","name":"Inflação - IPC-FESO - (número índice)","value":99.49407791},{"_id":"5fc99b9b389df502f8f0c40c","name":"Inflação - IPC/alimentos-FESO - (número índice)","value":100.0564189},{"_id":"5fc99b9b389df502f8f0c40d","name":"Inflação - IPC/bebidas-FESO - (número índice)","value":97.85234803},{"_id":"5fc99b9b389df502f8f0c40e","name":"Inflação - IPC/CB-FESO - (R$)","value":0},{"_id":"5fc99b9b389df502f8f0c40f","name":"Inflação - IPC/CB-FESO - (número índice)","value":0},{"_id":"5fc99b9b389df502f8f0c410","name":"Arroz Branco Tipo 1 - 5 KG (R$)","value":9.052},{"_id":"5fc99b9b389df502f8f0c411","name":"Feijão Preto - 1 KG (R$)","value":3.465},{"_id":"5fc99b9b389df502f8f0c412","name":"Feijão Carioquinha - 1 KG (R$)","value":7.14},{"_id":"5fc99b9b389df502f8f0c413","name":"Batata lavada - KG (R$)","value":2.4825},{"_id":"5fc99b9b389df502f8f0c414","name":"Banana Prata - KG (R$)","value":3.73},{"_id":"5fc99b9b389df502f8f0c415","name":"Tomate - KG (R$)","value":4.71},{"_id":"5fc99b9b389df502f8f0c416","name":"Farinha de Mandioca - 1 KG (R$)","value":1.825714286},{"_id":"5fc99b9b389df502f8f0c417","name":"Farinha de Trigo - 1 KG (R$)","value":1.61875},{"_id":"5fc99b9b389df502f8f0c418","name":"Fubá - 1 KG (R$)","value":1.035714286},{"_id":"5fc99b9b389df502f8f0c419","name":"Massa Padre Nosso - 500 GR (R$)","value":11.1475},{"_id":"5fc99b9b389df502f8f0c41a","name":"Macarrão Instântaneo - UNIDADE (R$)","value":3.3375},{"_id":"5fc99b9b389df502f8f0c41b","name":"Espagueti - 500 GR (R$)","value":2.235},{"_id":"5fc99b9b389df502f8f0c41c","name":"Pão de Forma - PACOTE (R$)","value":2.08},{"_id":"5fc99b9b389df502f8f0c41d","name":"Pão Bisnaga - PACOTE (R$)","value":5.3375},{"_id":"5fc99b9b389df502f8f0c41e","name":"Biscoito Salgado - PACOTE (R$)","value":2.735},{"_id":"5fc99b9b389df502f8f0c41f","name":"Biscoito Recheado - PACOTE (R$)","value":3.095},{"_id":"5fc99b9b389df502f8f0c420","name":"Leite - UNIDADE (R$)","value":16.56},{"_id":"5fc99b9b389df502f8f0c421","name":"Leite Condensado - LATA (R$)","value":1.73625},{"_id":"5fc99b9b389df502f8f0c422","name":"Queijo Mussarela - KG (R$)","value":4.4425},{"_id":"5fc99b9b389df502f8f0c423","name":"Queijo Ralado - PCT 100 GR (R$)","value":3.731428571},{"_id":"5fc99b9b389df502f8f0c424","name":"Manteiga - 200 GR (R$)","value":2.557142857},{"_id":"5fc99b9b389df502f8f0c425","name":"Iogurte - BANDEJA (R$)","value":2.405714286},{"_id":"5fc99b9b389df502f8f0c426","name":"Açúcar Refinado - 1 KG (R$)","value":8.434285714},{"_id":"5fc99b9b389df502f8f0c427","name":"Açúcar Cristal - 1 KG (R$)","value":3.486666667},{"_id":"5fc99b9b389df502f8f0c428","name":"Pêssego em Calda - 450 GRAMAS (R$)","value":3.716666667},{"_id":"5fc99b9b389df502f8f0c429","name":"Goiabada - pote (R$)","value":2.643333333},{"_id":"5fc99b9b389df502f8f0c42a","name":"Geléia de Mocotó - CX (R$)","value":2.946666667},{"_id":"5fc99b9b389df502f8f0c42b","name":"Achocolatado - 400 GR (R$)","value":3.3025},{"_id":"5fc99b9b389df502f8f0c42c","name":"Chã de Dentro - KG (R$)","value":15.8375},{"_id":"5fc99b9b389df502f8f0c42d","name":"Lingüiça Calabresa - KG (R$)","value":6.045},{"_id":"5fc99b9b389df502f8f0c42e","name":"Lingüiça Mista - KG (R$)","value":6.003333333},{"_id":"5fc99b9b389df502f8f0c42f","name":"Presunto - KG (R$)","value":5.079375},{"_id":"5fc99b9b389df502f8f0c430","name":"Mortadela - KG (R$)","value":1.511875},{"_id":"5fc99b9b389df502f8f0c431","name":"Frango Inteiro - KG (R$)","value":8.205},{"_id":"5fc99b9b389df502f8f0c432","name":"Peito de Frango - KG (R$)","value":4.1625},{"_id":"5fc99b9b389df502f8f0c433","name":"Ovos Grandes Brancos - DÚZIA (R$)","value":1.99375},{"_id":"5fc99b9b389df502f8f0c434","name":"Sal - 1 KG (R$)","value":0},{"_id":"5fc99b9b389df502f8f0c435","name":"Alho - KG (R$)","value":1.3471875},{"_id":"5fc99b9b389df502f8f0c436","name":"Cebola - KG (R$)","value":0},{"_id":"5fc99b9b389df502f8f0c437","name":"Caldo de Galinha - 126 gr. (R$)","value":3.915},{"_id":"5fc99b9b389df502f8f0c438","name":"Maionese - vidro 250 GR (R$)","value":2.575},{"_id":"5fc99b9b389df502f8f0c439","name":"Extrato de Tomate - lata 340 gr (R$)","value":4.782},{"_id":"5fc99b9b389df502f8f0c43a","name":"Pura Polpa - CAIXA 520 gr (R$)","value":7.957142857},{"_id":"5fc99b9b389df502f8f0c43b","name":"Molho Shoyu - VIDRO PEQ. (150 ml) (R$)","value":3.28},{"_id":"5fc99b9b389df502f8f0c43c","name":"Milho Verde - LATA (R$)","value":2.4775},{"_id":"5fc99b9b389df502f8f0c43d","name":"Salsicha - LATA (R$)","value":1.45},{"_id":"5fc99b9b389df502f8f0c43e","name":"Refrigerante de Cola - 2 LITROS (R$)","value":8.72625},{"_id":"5fc99b9b389df502f8f0c43f","name":"Refrigerante de Guaraná - 2 LITROS (R$)","value":4.74},{"_id":"5fc99b9b389df502f8f0c440","name":"Refrigerante de Laranja - 2 LITROS (R$)","value":2.60875},{"_id":"5fc99b9b389df502f8f0c441","name":"Suco de Caju - 500 ML (R$)","value":1.9475},{"_id":"5fc99b9b389df502f8f0c442","name":"Xarope de Guaraná - 1 LITRO (R$)","value":2.74125},{"_id":"5fc99b9b389df502f8f0c443","name":"Chá Mate - CX 100G (R$)","value":1.08625},{"_id":"5fc99b9b389df502f8f0c444","name":"Café - 500 GR (R$)","value":4.83},{"_id":"5fc99b9b389df502f8f0c445","name":"Café - 500 GR (R$)","value":4.22125},{"_id":"5fc99b9b389df502f8f0c446","name":"Cerveja Clara - CAIXA C/12 (R$)","value":14.318},{"_id":"5fc99b9b389df502f8f0c447","name":"Vinho Tinto - 750 ML (R$)","value":11.38833333},{"_id":"5fc99b9b389df502f8f0c448","name":"Óleo de Soja - PET 900 ml (R$)","value":8.96},{"_id":"5fc99b9b389df502f8f0c449","name":"Azeite - LATA (R$)","value":10.47714286},{"_id":"5fc99b9b389df502f8f0c44a","name":"Margarina Vegetal - 250 GR (R$)","value":2.54},{"_id":"5fc99b9b389df502f8f0c44b","name":"Sabão Tablete - PCT. C/ 5 UNID. (R$)","value":6.9025},{"_id":"5fc99b9b389df502f8f0c44c","name":"Sabão em Pó - CX 500G (R$)","value":3.5575},{"_id":"5fc99b9b389df502f8f0c44d","name":"Amaciante de Roupa - 2 LITROS (R$)","value":3.176666667},{"_id":"5fc99b9b389df502f8f0c44e","name":"Detergente Líquido (Neutro) - UNIDADE (R$)","value":2.0325},{"_id":"5fc99b9b389df502f8f0c44f","name":"Desinfetante Multi Uso -  500 ML (R$)","value":2.16375},{"_id":"5fc99b9b389df502f8f0c450","name":"Esponja de Aço - PACOTE (R$)","value":1.95375},{"_id":"5fc99b9b389df502f8f0c451","name":"Shampoo - 350 ML (R$)","value":4.01125},{"_id":"5fc99b9b389df502f8f0c452","name":"Condicionador - VD (GRANDE) (R$)","value":4.08},{"_id":"5fc99b9b389df502f8f0c453","name":"Sabonete - UNIDADE (R$)","value":5.67},{"_id":"5fc99b9b389df502f8f0c454","name":"Desodorante - Roll On 50 g (R$)","value":2.725},{"_id":"5fc99b9b389df502f8f0c455","name":"Papel Higiênico - PCT. C/ 4 UNID. (R$)","value":7.25},{"_id":"5fc99b9b389df502f8f0c456","name":"Creme Dental - 90 GR (R$)","value":4.935},{"_id":"5fc99b9b389df502f8f0c457","name":"Pão Francês - 1 Kg (R$)\r","value":0}],"createdAt":"2020-12-04T02:14:51.344Z","__v":0}]
+    const getPApiData = async() =>{
+        var apiResponse = [];
+        await api.get('/').then(resp => {apiResponse = resp.data})
+        
+        setApiData(apiResponse)
+    }
+
+    if (apiData.length==0){
+        getPApiData()
+    }
+
+
+    const getProducts = (data) =>{
+        var productList = [];
+        data[0].products.forEach(element => {
+            const productData = {
+                id : productList.length.toString(),
+                name: element.name
+            }
+            
+            productList.push(productData)
+        });
+        // console.log(productList)
+        setProducts(productList)
+    }
+
+    if (products.length==0 && apiData.length!=0){
+        getProducts(apiData)
+        setLoading(false)
+    }
+
+    
 
     return (
         <ProjectContext.Provider value={{
             state:{ apiData,
-            products
+            products,
+            loading
         }
         }}>
             {props.children}

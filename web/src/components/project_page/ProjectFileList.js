@@ -28,6 +28,11 @@ const useStyles = makeStyles({
   },
 });
 
+const fileList = [{"id":1, 'name':'arquivo1.csv', 'url':'#1'},
+                  {"id":2, 'name':'arquivo2.csv', 'url':'#2'},
+                  {"id":3, 'name':'arquivo3.csv', 'url':'#3'},
+                  {"id":4, 'name':'arquivo4.csv', 'url':'#4'}]
+
 export default function ProjectFileList() {
   const classes = useStyles();
   return (
@@ -49,33 +54,19 @@ export default function ProjectFileList() {
               Arquivos do Projeto
             </Typography>
           </Grid>
-          <Grid item >
-            <Link variant="body2" align="center">
-              arquivo.csv
-            </Link>
-          </Grid>
-          <Grid item >
-            <Link variant="body2"  align="center">
-              arquivo.csv
-            </Link>
-          </Grid>
-          <Grid item >
-            <Link variant="body2" align="center">
-              arquivo.csv
-            </Link>
-          </Grid>
-          <Grid item >
-            <Link variant="body2" align="center">
-              arquivo.csv
-            </Link>
-          </Grid>
-          <Grid item >
-            <Link variant="body2" align="center">
-              arquivo.csv
-            </Link>
-          </Grid>
+
+          {fileList.map(file =>{
+            return(
+              <Grid item key={file.id} >
+                <Link variant="body2" align="center" href={file.url}>
+                  {file.name}
+                </Link>
+              </Grid>
+            )
+          })}
+          
           <Grid>
-            <Button className={classes.button} size="medium">
+            <Button className={classes.button} size="medium" href='#download'>
               Download
             </Button>
           </Grid>

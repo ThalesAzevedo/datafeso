@@ -12,7 +12,7 @@ import {
   Paper,
   Button,
 } from "@material-ui/core";
-import  ProjectContext  from "../../context/context";
+import ProjectContext  from "../../context/context";
 import theme from "../../theme";
 
 const useStyles = makeStyles({
@@ -41,24 +41,48 @@ const useStyles = makeStyles({
 export default function Valores() {
   const classes = useStyles();
   const {state} = useContext(ProjectContext);
-  const [result, setResult] = useState('')
-  
 
-  const handleButtom = e => {
-    e.preventDefault();
-    setResult("Resultado esperado.")
+  const [date, setDate] = useState('');
+  const [product, setProduct] = useState('');
+  const [result, setResult] = useState('');
+  
+  const getDate = (event)=>{
+    const date = Date.parse(event.target.value);
+    setDate(date)
   }
 
+  const getProduct = (event) =>{
+    event.preventDefault();
+    setProduct(state.products[event.target.value])
+  }
+
+  const handleButtom = event => {
+    event.preventDefault();
+    console.log(date, product)
+
+    state.apiData.forEach(element => {
+      if (Date.parse(element.date) == date) {
+        element.products.forEach( item =>{
+          if (item.name == product.name){
+            setResult("R$ "+item.value.toString());
+          }
+        })
+      }
+  })
+}
   return (
     <ThemeProvider theme={theme}>
       <Paper className={classes.root}>
-      <Grid container direction="colunm" >
         <Typography variant="h6" color="primary">Consulta de Preços de Produtos</Typography>
+
+        {state.loading?
+        <Typography>Carregando dados...</Typography>
+      :
+      <Grid container direction="column" >
         <Grid container className={classes.box}>
             <FormControl variant="outlined" className={classes.input}>
               <InputLabel 
                 id="product-id-label"
-                InputLabelProps={{ shrink: true }}
               >
                 Produto
               </InputLabel>
@@ -66,11 +90,11 @@ export default function Valores() {
                 labelId="product-id-label"
                 id="productId"
                 label="Produto"
-                // value={}
-                // onChange={}
+                value={product.id? product.id: 0}
+                onChange={getProduct}
               >
                 {state.products.map((element) => {
-                  return <MenuItem value={element.id}>{element.name}</MenuItem>
+                  return <MenuItem key={element.id} value={element.id}>{element.name}</MenuItem>
                 })}
               </Select>
             </FormControl>
@@ -81,12 +105,10 @@ export default function Valores() {
               variant="outlined"
               label="Período"
               InputLabelProps={{ shrink: true }}
+              onChange={getDate}
             ></TextField>
-          
-          
-         
         </Grid>
-        <Grid xs={12}>
+        <Grid item xs={12}>
         <Button  type='submit' size='medium' variant='contained' color='primary' className={classes.input} onClick={handleButtom}>Consultar</Button>
         </Grid>
         <Grid container className={classes.result}>
@@ -95,6 +117,7 @@ export default function Valores() {
           </Typography>
         </Grid>
       </Grid>
+      }
       </Paper>
     </ThemeProvider>
   );

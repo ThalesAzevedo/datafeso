@@ -45,10 +45,10 @@ export default function ProjectContent(props) {
         <Container  className={classes.content}> 
           {tabValue === 0 && (
             <Grid container direction="row">
-            <Grid sm={12} md={9}>
+            <Grid item sm={12} md={9}>
                <ProjectDescription/>
             </Grid>
-            <Grid xs={12} md={3} >
+            <Grid item xs={12} md={3} >
               <AppLogin/>
               <ProjectFileList/>
             </Grid>

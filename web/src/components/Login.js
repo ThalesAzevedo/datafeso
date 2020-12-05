@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import {
   Grid,
@@ -28,11 +28,32 @@ const useStyles = makeStyles({
   button: {
     color: "#FFFFFF",
     backgroundColor: theme.palette.primary.main,
+
   },
 });
 
 export default function AppLogin() {
   const classes = useStyles();
+  const [user, setUser] = useState('');
+  const [pass, setPass] = useState('');
+  const [logged, setLogged] = useState(false);
+
+
+  const handleLogin = ()=>{
+    console.log(logged)
+    if(user==="tha"&&pass==="th"){
+
+    setLogged(true)
+    }
+  }
+
+  const handleLogout = ()=>{
+    console.log(logged)
+    setUser('');
+    setPass('');
+    setLogged(false)
+  }
+
   return (
     <Paper className={classes.root}>
       <ThemeProvider theme={theme}>
@@ -48,31 +69,46 @@ export default function AppLogin() {
               Área do Pesquisador
             </Typography>
           </Grid>
-          <Grid>
-            <TextField
-              className={classes.input}
-              size="small"
-              InputLabelProps={{ shrink: true }}
-              label="Usuário"
-              variant="outlined"
-            />
-          </Grid>
-          <Grid>
-            <TextField
-              type="password"
-              className={classes.input}
-              size="small"
-              InputLabelProps={{ shrink: true }}
-              label="Senha"
-              variant="outlined"
-            />
-          </Grid>
-          <Grid>
-            <Button className={classes.button} href="#" color="secondary">
-              Login
+            {!logged? 
+              <>
+                <Grid>
+                  <TextField
+                    className={classes.input}
+                    size="small"
+                    InputLabelProps={{ shrink: true }}
+                    label="Usuário"
+                    name="user"
+                    variant="outlined"
+                    onChange={event => setUser(event.target.value)}
+                  />
+                </Grid>
+                <Grid>
+                  <TextField
+                    type="password"
+                    className={classes.input}
+                    size="small"
+                    InputLabelProps={{ shrink: true }}
+                    label="Senha"
+                    name ='pass'
+                    variant="outlined"  
+                    onChange={event => setPass(event.target.value)}
+                  />
+                </Grid>
+                <Grid>
+                  <Button  className={classes.button} href="#" color="secondary" onClick={handleLogin}>
+                    Login
+                  </Button>
+              </Grid>
+            </>
+         :<>
+            <Typography>Olá {user}</Typography>
+            <Button  className={classes.button} href="#" color="secondary" onClick={handleLogout} >
+              Logout
             </Button>
-          </Grid>
+          </>
+        }
         </Grid>
+        
       </ThemeProvider>
     </Paper>
   );
