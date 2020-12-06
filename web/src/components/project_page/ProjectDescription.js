@@ -33,11 +33,11 @@ export default function ProjectContent() {
     <Typography className={classes.text}>Praesent scelerisque turpis sollicitudin elit porttitor, eget suscipit ex efficitur. Etiam ullamcorper velit lobortis dapibus consequat. Etiam egestas ultrices blandit. Etiam a tellus eros. Praesent ut vehicula massa. Morbi non ultrices ipsum. Suspendisse dapibus elementum pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam congue luctus mollis. Phasellus vulputate arcu et lorem blandit iaculis.</Typography></Typography>
 
     <Typography variant="h6" className={classes.title}>Autores</Typography>
-    <Typography className={classes.text}>Professora Roberta Amaral</Typography>
+    <Typography className={classes.text}>Professora Roberta</Typography>
     <Typography className={classes.text}>Professor Francisco Jovando Medeiros</Typography>
 
     <Typography variant="h6" className={classes.title}>Participantes</Typography>
-    <Typography className={classes.text}>Lucas Beltrano Cicrano</Typography>
+    <Typography className={classes.text}>Lucas </Typography>
     <Typography className={classes.text}>Thales Coelho de Azevedo</Typography>
     </Paper>
   );

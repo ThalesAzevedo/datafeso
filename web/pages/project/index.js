@@ -2,10 +2,12 @@ import Header from "../../src/components/Header";
 import ProjectContent from "../../src/components/project_page/ProjectContent";
 import Footer from "../../src/components/Footer";
 
+
+import {useContext} from 'react';
 import {makeStyles, ThemeProvider, Grid, Typography } from "@material-ui/core";
 import theme from "../../src/theme";
-import api from '../../src/services/api'
-import {ProjectProvider} from '../../src/context/context'
+import ProjectContext, {ProjectProvider} from '../../src/context/context'
+
 
 const useStyles = makeStyles({
   root: {
@@ -36,12 +38,14 @@ const useStyles = makeStyles({
 export default function ProjectView() {
   const classes = useStyles();
 
+  const {state} = useContext(ProjectContext);
+
 
   return (
     <ThemeProvider theme={theme}>
       <ProjectProvider>
         <div className={classes.root}>
-        
+
         <Header />
         <main>
           <Grid container direction="column">
@@ -59,7 +63,7 @@ export default function ProjectView() {
                   Autora: Prof. Roberta
                 </Typography>
                 <Typography variant="body1" color="primary">
-                  Ultima Atualização: 01/12/2020
+                  Ultima Atualização: 10/09/2020
                 </Typography>
             </Grid>
 

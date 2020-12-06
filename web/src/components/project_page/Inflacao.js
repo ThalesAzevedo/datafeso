@@ -52,7 +52,6 @@ export default function Inflacao() {
     event.preventDefault();
     const date = Date.parse(event.target.value);
     setInitDate(date)
-
   }
 
   const getFinalDate = (event)=>{
@@ -68,7 +67,6 @@ export default function Inflacao() {
 
   const handleButtom = event => {
     event.preventDefault();
-    // console.log(initDate, finalDate, product)
     let prevMonth;
     let initValue;
     let finalValue;
@@ -76,7 +74,6 @@ export default function Inflacao() {
     state.apiData.forEach(element => {
       if (Date.parse(element.date) == initDate) {
         prevMonth = element.dataCollection-1
-        // console.log(element.dataCollection, prevMonth)
 
         state.apiData.forEach(prevElement => {
           if (prevElement.dataCollection == prevMonth) {
@@ -98,7 +95,7 @@ export default function Inflacao() {
       let calc = (finalValue/initValue)-1
       // console.log(initValue, finalValue, calc)/
 
-      setResult(calc.toString()+"%")
+      setResult((calc*100).toString()+"%")
 
   })
 }
