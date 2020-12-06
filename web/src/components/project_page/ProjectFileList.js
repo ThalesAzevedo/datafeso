@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { ThemeProvider } from '@material-ui/core'
 import theme from "../../theme";
+import {baseURL} from '../../services/api'
 
 const useStyles = makeStyles({
   root: {
@@ -28,10 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-const fileList = [{"id":1, 'name':'arquivo1.csv', 'url':'#1'},
-                  {"id":2, 'name':'arquivo2.csv', 'url':'#2'},
-                  {"id":3, 'name':'arquivo3.csv', 'url':'#3'},
-                  {"id":4, 'name':'arquivo4.csv', 'url':'#4'}]
+const fileList = [{"id":1, 'name':'IPCFeso.csv', 'url':'/download/IPCFeso.csv'}]
 
 export default function ProjectFileList() {
   const classes = useStyles();
@@ -58,15 +56,15 @@ export default function ProjectFileList() {
           {fileList.map(file =>{
             return(
               <Grid item key={file.id} >
-                <Link variant="body2" align="center" href={file.url}>
+                <Typography variant="body2" align="center" href={'#'}>
                   {file.name}
-                </Link>
+               </Typography>
               </Grid>
             )
           })}
-          
+
           <Grid>
-            <Button className={classes.button} size="medium" href='#download'>
+            <Button className={classes.button} size="medium" href={baseURL+fileList[0].url}>
               Download
             </Button>
           </Grid>
