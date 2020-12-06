@@ -10,7 +10,6 @@ import {
   Input,
 } from '@material-ui/core';
 import theme from '../theme';
-import api from '../services/api';
 import Upload from './project_page/UploadFile';
 
 const useStyles = makeStyles({
@@ -29,6 +28,7 @@ const useStyles = makeStyles({
     color: '#FFFFFF',
   },
   button: {
+    margin: theme.spacing(2),
     color: '#FFFFFF',
     backgroundColor: theme.palette.primary.main,
   },
@@ -39,29 +39,6 @@ export default function AppLogin() {
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
   const [logged, setLogged] = useState(false);
-
-
-  const onSubmitFile = (event) => {
-    // event.preventDefault();
-
-    let formData = new FormData();
-    formData.append('file', file);
-
-    console.log(file);
-
-    api
-      .post('/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then(function () {
-        console.log('SUCCESS!!');
-      })
-      .catch(function (err) {
-        console.log('FAILURE!!', err);
-      });
-  };
 
   const handleLogin = () => {
     console.log(logged);
@@ -138,35 +115,7 @@ export default function AppLogin() {
               >
                 Logout
               </Button>
-<Upload/>
-              {/* <form
-                id="uploadForm"
-                action=""
-                role="form"
-                method="post"
-                enctype="multipart/form-data"
-              >
-                <Grid container direction="column">
-                  <input type="file" id="file" name="file" onChange={event => setFile(event.target.files[0])}/>
-
-
-                  <Input
-                    type="file"
-                    id="file"
-                    name="file"
-                    onChange={(event) => setFile(event.target.files[0])}
-                    className={classes.input}
-                  ></Input>
-                  <Button
-                    type="submit"
-                    onClick={onSubmitFile}
-                    className={classes.button}
-                  >
-                    Upload
-                  </Button>
-                  <input type='submit' value='Upload' onClick={onSubmitFile} className={classes.button}/>
-                </Grid>
-              </form> */}
+              <Upload />
             </>
           )}
         </Grid>

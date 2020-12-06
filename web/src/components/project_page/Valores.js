@@ -49,7 +49,6 @@ export default function Valores() {
   const [product, setProduct] = useState('');
   const [result, setResult] = useState('');
 
-
   const getDate = (event) => {
     const date = Date.parse(event.target.value);
     setDate(date);
@@ -123,8 +122,9 @@ export default function Valores() {
               ></TextField>
             </Grid>
             <Typography className={classes.comment}>
-              OBS: Dados coletados do mês {state.limit.firstDate[1]} de {state.limit.firstDate[0]} até o
-              mês {state.limit.lastDate[1]} de {state.limit.lastDate[0]}.
+              OBS: Dados coletados do mês {state.limit.firstDate[1]} de{' '}
+              {state.limit.firstDate[0]} até o mês {state.limit.lastDate[1]} de{' '}
+              {state.limit.lastDate[0]}.
             </Typography>
             <Grid item xs={12}>
               <Button

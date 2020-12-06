@@ -176,11 +176,11 @@ export default function Inflacao() {
               ></TextField>
             </Grid>
             <Typography className={classes.comment}>
-              OBS: Dados coletados do mês {state.limit.firstDate[1]} de {state.limit.firstDate[0]} até o
-              mês {state.limit.lastDate[1]} de {state.limit.lastDate[0]}.
+              OBS: Dados coletados do mês {state.limit.firstDate[1]} de{' '}
+              {state.limit.firstDate[0]} até o mês {state.limit.lastDate[1]} de{' '}
+              {state.limit.lastDate[0]}.
             </Typography>
             <Grid item xs={12}>
-
               <Button
                 type="submit"
                 size="medium"

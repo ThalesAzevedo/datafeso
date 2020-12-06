@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import Dropzone from 'react-dropzone';
 import {
   makeStyles,
@@ -8,12 +7,10 @@ import {
   Grid,
   Button,
 } from '@material-ui/core';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
 import theme from '../../theme';
 import api from '../../services/api';
 
-// import { DropContainer, UploadMessage } from "./styles";
 
 const useStyles = makeStyles({
   dropzone: {
@@ -94,7 +91,7 @@ export default function Upload() {
   function progressView() {
     if (uploaded == 1) {
       return (
-        <Grid container direction="row" align="center"justify='center'>
+        <Grid container direction="row" align="center" justify="center">
           <Grid>
             <Typography>Enviando...</Typography>
           </Grid>
@@ -120,8 +117,6 @@ export default function Upload() {
 
     let formData = new FormData();
     formData.append('file', file);
-
-    // console.log(file);
     setUploaded(1);
 
     api
@@ -156,12 +151,12 @@ export default function Upload() {
         <Dropzone
           accept={['text/csv', 'application/vnd.ms-excel']}
           onDropAccepted={(file) => setFile(file[0])}
-          >
+        >
           {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
             <Container
-            {...getRootProps()}
-            isDragActive={isDragActive}
-            isDragReject={isDragReject}
+              {...getRootProps()}
+              isDragActive={isDragActive}
+              isDragReject={isDragReject}
             >
               <input {...getInputProps()} />
               {renderDragMessage(isDragActive, isDragReject)}
