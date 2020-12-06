@@ -1,39 +1,40 @@
 import {
   makeStyles,
-  TextField,
   Typography,
   Grid,
   Button,
-  ThemeProvider,
-} from "@material-ui/core";
-import React from "react";
-import theme from "../../theme";
+  Paper,
+  TextField,
+} from '@material-ui/core';
+import React from 'react';
+import { ThemeProvider } from '@material-ui/core';
+import theme from '../../theme';
 
 const useStyles = makeStyles({
   root: {
-    padding: theme.spacing(1),
-    minWidth: "240px",
+    margin: theme.spacing(1),
   },
   box: {
-    backgroundColor: "#eeeeee",
-    borderRadius: "5px",
+    borderRadius: '5px',
     padding: theme.spacing(2),
   },
   input: {
     margin: theme.spacing(1),
   },
+  title: {
+    color: theme.palette.primary.main,
+  },
   button: {
     margin: theme.spacing(2),
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     backgroundColor: theme.palette.primary.main,
   },
 });
 
-export default function ProjectFilters() {
+export default function ProjectFileList() {
   const classes = useStyles();
-
   return (
-    <div className={classes.root}>
+    <Paper className={classes.root}>
       <ThemeProvider theme={theme}>
         <Grid
           container
@@ -42,9 +43,9 @@ export default function ProjectFilters() {
           alignItems="center"
           className={classes.box}
         >
-          <Grid item >
+          <Grid item>
             <Typography variant="h6" color="primary" align="center">
-              Filtrar Pesquisa
+              Filtrar Projetos
             </Typography>
           </Grid>
           <Grid item>
@@ -104,6 +105,6 @@ export default function ProjectFilters() {
           </Grid>
         </Grid>
       </ThemeProvider>
-    </div>
+    </Paper>
   );
 }

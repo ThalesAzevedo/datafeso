@@ -1,56 +1,59 @@
-import React, { createContext, useState} from 'react';
-import api from '../services/api'
+import React, { createContext, useState } from 'react';
+import api from '../services/api';
 
-const ProjectContext = createContext({});
+export const ProjectContext = createContext({});
 
-export function ProjectProvider (props) {
-    const [apiData, setApiData] = useState([]);
-    const [products, setProducts]=useState([]);
-    const [loading, setLoading] = useState(true);
+export function ProjectProvider(props) {
+  const [apiData, setApiData] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const getPApiData = async() =>{
-        var apiResponse = [];
-        await api.get('/').then(resp => {apiResponse = resp.data})
-        
-        setApiData(apiResponse)
-    }
+  const [firstDate, setFirstDate] = useState(['', '']);
+  const [lastDate, setLastDate] = useState(['', '']);
 
-    if (apiData.length==0){
-        getPApiData()
-    }
+  const getApiData = async () => {
+    var apiResponse = [];
+    await api.get('/').then((resp) => {
+      apiResponse = resp.data;
+    });
+    setFirstDate(apiResponse[0].date.split('-'));
+    setLastDate(apiResponse[apiResponse.length - 2].date.split('-'));
+    setApiData(apiResponse);
+  };
 
 
-    const getProducts = (data) =>{
-        var productList = [];
-        data[0].products.forEach(element => {
-            const productData = {
-                id : productList.length.toString(),
-                name: element.name
-            }
-            
-            productList.push(productData)
-        });
-        // console.log(productList)
-        setProducts(productList)
-    }
+  if (apiData.length == 0) {
+    getApiData();
+  }
 
-    if (products.length==0 && apiData.length!=0){
-        getProducts(apiData)
-        setLoading(false)
-    }
+  const getProducts = (data) => {
+    var productList = [];
+    data[0].products.forEach((element) => {
+      const productData = {
+        id: productList.length.toString(),
+        name: element.name,
+      };
 
-    
+      productList.push(productData);
+    });
+    // console.log(productList)
+    setProducts(productList);
+  };
 
-    return (
-        <ProjectContext.Provider value={{
-            state:{ apiData,
-            products,
-            loading
-        }
-        }}>
-            {props.children}
-        </ProjectContext.Provider>
-    )
+  if (products.length == 0 && apiData.length != 0) {
+    getProducts(apiData);
+    setLoading(false);
+  }
+
+  return (
+    <ProjectContext.Provider
+      value={{
+        state: { apiData, products, loading, limit: { firstDate, lastDate } },
+      }}
+    >
+      {props.children}
+    </ProjectContext.Provider>
+  );
 }
 
 export default ProjectContext;

@@ -24,8 +24,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function ProjectContent() {
   const classes = useStyles();
+
+  const authors = [{'id':1 ,'name':'Professora Roberta Montello Amaral' },{'id':2 ,'name':'Professor Francisco Jovando Rebelo de Albuquerque' }];
+  const members = [{'id':1 ,'name':'Luiz Claudio Ramos' },{'id':2 ,'name':'Thales Coelho de Azevedo' }]
+
   return (
     <Paper className={classes.root}>
     <Typography variant="h6" className={classes.title}>Descrição</Typography>
@@ -33,12 +38,17 @@ export default function ProjectContent() {
     <Typography className={classes.text}>Praesent scelerisque turpis sollicitudin elit porttitor, eget suscipit ex efficitur. Etiam ullamcorper velit lobortis dapibus consequat. Etiam egestas ultrices blandit. Etiam a tellus eros. Praesent ut vehicula massa. Morbi non ultrices ipsum. Suspendisse dapibus elementum pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam congue luctus mollis. Phasellus vulputate arcu et lorem blandit iaculis.</Typography></Typography>
 
     <Typography variant="h6" className={classes.title}>Autores</Typography>
-    <Typography className={classes.text}>Professora Roberta</Typography>
-    <Typography className={classes.text}>Professor Francisco Jovando Medeiros</Typography>
+
+    {authors.map(author=>{
+      return <Typography classNameAAAAA={classes.text} key={author.id}>{author.name}</Typography>
+    })}
 
     <Typography variant="h6" className={classes.title}>Participantes</Typography>
-    <Typography className={classes.text}>Lucas </Typography>
-    <Typography className={classes.text}>Thales Coelho de Azevedo</Typography>
+
+    {members.map(member=>{
+      return <Typography className={classes.text} key={member.id}>{member.name}</Typography>
+    })}
+
     </Paper>
   );
 }

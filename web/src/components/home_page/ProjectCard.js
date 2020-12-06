@@ -7,8 +7,9 @@ import {
   Typography,
   CardActions,
   Button,
-} from "@material-ui/core";
-import theme from "../../theme";
+  ThemeProvider,
+} from '@material-ui/core';
+import theme from '../../theme';
 
 const useStyles = makeStyles({
   root: {
@@ -19,8 +20,8 @@ const useStyles = makeStyles({
     color: theme.palette.primary.main,
   },
   text: {
-    fontWeight: "bold",
-    "& span": {
+    fontWeight: 500,
+    '& span': {
       color: theme.palette.primary.main,
     },
   },
@@ -28,78 +29,73 @@ const useStyles = makeStyles({
 
 export default function ProjectCard() {
   const classes = useStyles();
-  return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Descriçao da Imagem"
-          height="120"
-          image="https://entrepreneurhandbook.co.uk/wp-content/uploads/2014/11/Summary-of-quantative-research-report.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography
-            className={classes.title}
-            gutterBottom
-            variant="h6"
-            component="h2"
-          >
-            Título da Pesquisa
-          </Typography>
-          <Typography
-            variant="body2"
-            className={classes.text}
-            color="textSecondary"
-            component="p"
-          >
-            Descriçao breve da pesquisa, objetivos e resutados esperados.
-          </Typography>
-          <div></div>
-          <Typography
-            variant="body2"
-            className={classes.text}
-            color="textSecondary"
-            component="p"
-          >
-            <span>Autor:</span> Thales Azevedo
-          </Typography>
-          <Typography
-            variant="body2"
-            className={classes.text}
-            color="textSecondary"
-            component="p"
-          >
-            <span>N de Arquivos:</span> 10
-          </Typography>
-          <Typography
-            variant="body2"
-            className={classes.text}
-            color="textSecondary"
-            component="p"
-          >
-            <span>Última Atualização:</span> 12/12/2020
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary" href="/project">
-          Conhecer Pesquisa
-        </Button>
-      </CardActions>
-    </Card>
 
-    // <CardWarp>
-    // <CardHeader>
-    //     <p>ID #000000</p>
-    //     <h3>Nome do Projeto</h3>
-    // </CardHeader>
-    // <CardDescription>
-    //     <p><span>Autor:</span> Thales Azevedo</p>
-    //     <p><span>Descrição:</span> O projeto com tal nome tem a roposta de pesquisar tal assunto e obter resutados que podem causar tais impactos.</p>
-    //     <p>
-    //     <p><span>Ultima Atualização:</span> 00/00/0000</p>
-    // </CardDescription>
-    // </CardWarp>
+  const projectData = {
+    id: 0,
+    title: 'IPC-Feso | Cálculo de Inflação de Teresópolis',
+    projectImage:
+      'https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    briefDescription:
+      'Descriçao breve da pesquisa, objetivos e resutados esperados.',
+    mainAuthor: 'Prof. Roberta Montello Amaral',
+    nFiles: 1,
+    lastUpdate: '01/09/2020',
+    url: '/project',
+  };
+  return (
+    <ThemeProvider>
+      <Card className={classes.root}>
+        <CardActionArea href={projectData.url}>
+          <CardMedia
+            component="img"
+            height="120"
+            image={projectData.projectImage}
+          />
+          <CardContent>
+            <Typography
+              className={classes.title}
+              gutterBottom
+              variant="h6"
+              component="h2"
+            >
+              {projectData.title}
+            </Typography>
+            <Typography
+              variant="body2"
+              className={classes.text}
+              color="textSecondary"
+              component="p"
+            >
+              {projectData.briefDescription}
+            </Typography>
+            <div></div>
+            <Typography
+              variant="body2"
+              className={classes.text}
+              color="textSecondary"
+              component="p"
+            >
+              <span>Autor Principal:</span> {projectData.mainAuthor}
+            </Typography>
+            <Typography
+              variant="body2"
+              className={classes.text}
+              color="textSecondary"
+              component="p"
+            >
+              <span>Arquivos:</span> {projectData.nFiles}
+            </Typography>
+            <Typography
+              variant="body2"
+              className={classes.text}
+              color="textSecondary"
+              component="p"
+            >
+              <span>Última Atualização:</span> {projectData.lastUpdate}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </ThemeProvider>
   );
 }

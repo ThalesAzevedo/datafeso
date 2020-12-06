@@ -1,8 +1,7 @@
-import React from "react";
-import ProjectCard from "./ProjectCard";
-
-import { Grid, makeStyles } from "@material-ui/core";
-import theme from "../../theme";
+import React from 'react';
+import ProjectCard from './ProjectCard';
+import { Grid, makeStyles } from '@material-ui/core';
+import theme from '../../theme';
 
 const useStyles = makeStyles({
   root: {
@@ -17,37 +16,6 @@ export default function ProjectList() {
       <Grid>
         <ProjectCard />
       </Grid>
-      <Grid>
-        <ProjectCard />
-      </Grid>
-      <Grid>
-        <ProjectCard />
-      </Grid>
-      <Grid>
-        <ProjectCard />
-      </Grid>
-      <Grid>
-        <ProjectCard />
-      </Grid>
     </Grid>
   );
 }
-
-// class ProjectList extends Component{
-//     render(){
-//         return(
-
-//             <ProjectsWarp>
-
-//                 <ProjectCard/>
-//                 <ProjectCard/>
-//                 <ProjectCard/>
-//                 <ProjectCard/>
-//                 <ProjectCard/>
-
-//             </ProjectsWarp>
-//         )
-//     }
-// }
-
-// export default ProjectList

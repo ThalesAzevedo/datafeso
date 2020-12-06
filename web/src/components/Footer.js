@@ -1,11 +1,11 @@
-import { ThemeProvider, makeStyles, Container, Grid } from "@material-ui/core";
-import theme from "../theme";
+import { ThemeProvider, makeStyles, Container, Grid } from '@material-ui/core';
+import theme from '../theme';
 
 const styles = makeStyles({
   footer: {
     padding: theme.spacing(2),
-    marginTop: "auto",
-    backgroundColor: theme.palette.grey["900"],
+    marginTop: 'auto',
+    backgroundColor: theme.palette.grey['900'],
   },
 });
 
@@ -16,12 +16,12 @@ export default function Footer() {
     <ThemeProvider theme={theme}>
       <footer className={classes.footer}>
         <Container>
-          <Grid container alignItems={"center"} direction={"column"}>
+          <Grid container alignItems={'center'} direction={'column'}>
             <Grid item>
               <img
-                src={"http://www.unifeso.edu.br/images/logo/UNIFESO-BRANCO.png"}
+                src={'http://www.unifeso.edu.br/images/logo/UNIFESO-BRANCO.png'}
                 height={60}
-                alt={"Logo da UNIFESO"}
+                alt={'Logo da UNIFESO'}
               />
             </Grid>
           </Grid>
