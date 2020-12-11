@@ -55,10 +55,10 @@ export default function ProjectView() {
               </Grid>
               <Grid item className={classes.subtitle}>
                 <Typography variant="body1" color="primary">
-                  Autora: Prof. Roberta
+                  Autora: Prof. Roberta Montello Amaral
                 </Typography>
                 <Typography variant="body1" color="primary">
-                  Ultima Atualização: 10/09/2020{}
+                  Ultima Atualização: 10/12/2020{}
                 </Typography>
               </Grid>
 
