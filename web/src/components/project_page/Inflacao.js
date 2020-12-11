@@ -115,7 +115,8 @@ export default function Inflacao() {
       let calc = finalValue / initValue - 1;
       // console.log(initValue, finalValue, calc)/
 
-      setResult((calc * 100).toString() + '%');
+
+      setResult((calc * 100).toPrecision(5).toString() + '%');
     });
   };
 

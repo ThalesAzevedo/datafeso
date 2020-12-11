@@ -36,10 +36,10 @@ export default function ProjectCard() {
     projectImage:
       'https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     briefDescription:
-      'Descriçao breve da pesquisa, objetivos e resutados esperados.',
+    'O IPC-FESO é o Índice de Preços ao Consumidor de Teresópolis, calculado pelo Centro Universitário Serra dos Órgãos (UNIFESO).',
     mainAuthor: 'Prof. Roberta Montello Amaral',
     nFiles: 1,
-    lastUpdate: '01/09/2020',
+    lastUpdate: '01/12/2020',
     url: '/project',
   };
   return (

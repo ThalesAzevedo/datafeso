@@ -67,7 +67,13 @@ export default function Valores() {
       if (Date.parse(element.date) == date) {
         element.products.forEach((item) => {
           if (item.name == product.name) {
-            setResult('R$ ' + item.value.toString());
+
+            if (item.name.includes('índice')){
+              console.log(item.name)
+              setResult(item.value.toString())
+            } else {
+            setResult(item.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+          }
           }
         });
       }

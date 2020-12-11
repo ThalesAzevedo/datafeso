@@ -14,8 +14,6 @@ named-equator-246401-c8a53df5c9c1.json
 # production
 /build
 
-# next.js build output
-.next
 # dotenv environment variables file (build for Zeit Now)
 .env
 .env.build
