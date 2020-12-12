@@ -41,7 +41,6 @@ export default function ProjectContent() {
       >
         <Tab className={classes.tabTitle} label={'Dados do Pesquisa/Projeto'} />
         <Tab className={classes.tabTitle} label={'Consulta de Dados'} />
-        <Tab className={classes.tabTitle} label={'Gráfico'} />
       </Tabs>
       <main className={classes.layout}>
         <Container className={classes.content}>
@@ -62,7 +61,6 @@ export default function ProjectContent() {
               <Inflacao />
             </>
           )}
-          {tabValue === 2 && <Chart />}
         </Container>
       </main>
     </div>

@@ -70,7 +70,7 @@ export default function Valores() {
 
             if (item.name.includes('índice')){
               console.log(item.name)
-              setResult(item.value.toString())
+              setResult(item.value.toString().replace('.',','))
             } else {
             setResult(item.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
           }
